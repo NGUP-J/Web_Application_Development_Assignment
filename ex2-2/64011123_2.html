@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    <style>
+        #parent {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            width: 43%;
+            margin-inline: auto;
+        }
+
+        .top,
+        footer {
+            color: rgba(0, 2, 252, 255);
+            background-color: rgba(255, 215, 0, 255);
+            text-align: center;
+            width: 50%;
+            margin-inline: auto;
+
+        }
+
+        .article {
+            text-align: center;
+            color: rgba(221, 162, 222, 255);
+        }
+
+        .reporter {
+            display: flex;
+            justify-content: space-between;
+            color: cornflowerblue;
+        }
+
+        img {
+            border: solid cornflowerblue;
+            border-width: 5;
+        }
+
+        time {
+            color: palevioletred;
+            font-style: oblique;
+            font-weight: bolder;
+        }
+
+        article {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 100px;
+        }
+
+        article ul {
+            margin: 0;
+        }
+
+        aside {
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+            font-size: 2.5em;
+            padding-right: 3.5em;
+            font-style: oblique;
+        }
+        section.luckd {
+            display: inline-block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <h1>SW Studio Today</h1>
+    </header>
+    <div id="parent">
+        <header class="article">
+            <h2>The record of the CSS class</h2>
+        </header>
+        <div class="reporter">
+            <div class="text">
+                Reported by <br>Mr. Ditthapong Juengjeerasit<br> (jj)<br> ID 64011123<br><br>
+                <time datetime="2023-01-28">Jan 28, 2023</time>
+            </div>
+            <img src="https://previews.123rf.com/images/gmast3r/gmast3r1809/gmast3r180900199/109840480-brunette-businessman-avatar-man-face-profile-icon-concept-online-support-service-male-cartoon-charac.jpg"
+                alt="picture" width=200>
+
+        </div>
+        <article>
+            <section class="col1">
+                <h3>Introduction</h3>
+                <p>describe your background about CSS e.g.
+                <ul>
+                    <li>do you know CSS?</li>
+                    <li>Have you ever been using CSS?</li>
+                    <li>Have you ever worked with CSS before?</li>
+                    <li>Have you any idea how CSS works?</li>
+                    <li>What are you expecting from CSS?</li>
+                    <li>etc.</li>
+                </ul>
+
+                <section class="prog">
+                    <p>Progress of today's class <progress value="2" max="5"></progress></p>
+                </section>
+
+                <section class="luckd">
+                    <p class="reg">register for lucky draw</p>
+                    <form class="form">
+                        <fieldset>
+                            <label>Name:</label><em>*</em> <input type="text" id="name" placeholder="John Smith"
+                                autofocus required><br>
+                            <label>email:</label><em>*</em> <input type="email" id="email" placeholder="abc@def.com"
+                                autofocus required><br>
+                            <label>Tel:</label><em>*</em> <input type="tel" id="tel" placeholder="0xx-xxxxxxx"
+                                pattern="[0-9]{3}-[0-9]{7}" autofocus required><br>
+                            <input type="submit">
+                        </fieldset>
+                    </form>
+                </section>
+
+            </section>
+
+            <section class="col2">
+                <h3>The expectation</h3>
+                <p>Describe your expectations for today's class</p>
+                <p>You can list it like this:</p>
+                <ol>
+                    <li>expect #1</li>
+                    <li>expect #2</li>
+                    <li>expect #3</li>
+                </ol>
+
+                <aside>
+                    <p>your quote of <br>today 's class</p>
+                </aside>
+
+            </section>
+        </article>
+    </div>
+    <footer>
+        ce.kmitl all rights reserved & copyright 2020
+    </footer>
+</body>
+
+</html>
