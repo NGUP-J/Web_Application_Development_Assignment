@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="maincontainer"></div>
+    <script>
+        // header 
+        function Head() {
+            let val = document.createElement("h2");
+            val.innerHTML = 'Exercise 04: JavaScript&DOM';
+            return val;
+        }
+
+        // Button
+        function Butt() {
+            let val = document.createElement("button");
+            val.innerHTML = 'Click me to display Date and Time';
+            return val;
+        }
+
+        // Text onmouseover
+        function tom() {
+            let val = document.createElement("u");
+            val.innerHTML = 'Personal Info';
+            val.style.color = 'pink';
+            val.style.cursor = "pointer";
+            val.onmouseover = () => {
+                val.style.background = 'yellow';
+                val.style.color = 'black';
+            }
+            val.onmouseleave = () => {
+                val.style.background = 'transparent';
+                val.style.color = 'pink';
+            }
+            return val;
+        }
+
+        function ul() {
+            let val = document.createElement("ul");
+            let val1 = document.createElement("li");
+            let val2 = document.createElement("li");
+            let val3 = document.createElement("li");
+            val1.innerHTML = 'Ditthapong Juengjeerasit, ID: 64011123';
+            val2.innerHTML = 'Subject:WEB APPLICATION DEVELOPMENT';
+            val3.innerHTML = 'Semester:2/2565';
+            val.appendChild(val1);
+            val.appendChild(val2);
+            val.appendChild(val3);
+            val.style.display = "none";
+            return val;
+        }
+
+        function Snap() {
+            let val = document.createElement("h1");
+            val.innerHTML = "Snapshots";
+            return val;
+        }
+
+        let tex1 = document.createElement("a");
+        let tex2 = document.createElement("a");
+        let tex3 = document.createElement("a");
+        let tex4 = document.createElement("a");
+
+        function listImg() {
+            let val = document.createElement("ul");
+            let val1 = document.createElement("li");
+            let val2 = document.createElement("li");
+            let val3 = document.createElement("li");
+            let val4 = document.createElement("li");
+            val1.appendChild(tex1);
+            val2.appendChild(tex2);
+            val3.appendChild(tex3);
+            val4.appendChild(tex4);
+            tex1.innerHTML = 'Fireworks';
+            tex2.innerHTML = 'Crest';
+            tex3.innerHTML = 'Action';
+            tex4.innerHTML = 'Buffalo';
+            val.style.textDecorationLine = "underline";
+            val.style.textDecorationColor = "blue";
+            tex1.style.color = "blue";
+            tex2.style.color = "blue";
+            tex3.style.color = "blue";
+            tex4.style.color = "blue";
+            val.appendChild(val1);
+            val.appendChild(val2);
+            val.appendChild(val3);
+            val.appendChild(val4);
+            tex1.style.cursor = "pointer";
+            tex2.style.cursor = "pointer";
+            tex3.style.cursor = "pointer";
+            tex4.style.cursor = "pointer";
+            return val;
+        }
+
+        // call function
+        let head1 = Head();
+        let butt1 = Butt();
+        butt1.attributes = `data-inline="true"`;
+        let Paragraphs = document.createElement("p")
+        let Paragraphs2 = document.createElement("div");
+        let ntex = document.createElement("h2");
+        ntex.style.display = "inline";
+        ntex.innerHTML = "1";
+        ntex.style.opacity = "0%"
+        let tex = tom();
+        let Ul = ul();
+        let snap = Snap();
+        let ListImg = listImg();
+        let img1 = document.createElement("img");
+        img1.src = 'https://scontent.fbkk8-4.fna.fbcdn.net/v/t39.30808-6/297283850_5367962686597930_4237137743468903702_n.png?_nc_cat=100&ccb=1-7&_nc_sid=e3f864&_nc_ohc=CK2FcUedWusAX9fl5yR&_nc_oc=AQkxDt2t6kvge60TQmKLtRcRe55MpHcE93MiB_nOv_FOjVAirX2_yj_NXX-KaCQdHKV1nRwXPu_yp3kaSY0nWYFK&_nc_ht=scontent.fbkk8-4.fna&oh=00_AfA12qAn8iFV0B1tHvpbrRGi5DRAs2hO49ybXN6ij9QPPw&oe=63F872DE'
+        img1.style.width = "400px";
+
+        // Adding Elements
+        document.body.appendChild(head1);
+        document.body.appendChild(Paragraphs2);
+        Paragraphs2.appendChild(butt1);
+        Paragraphs2.appendChild(ntex);
+        document.body.appendChild(Paragraphs);
+        Paragraphs.appendChild(tex);
+        document.body.appendChild(Ul);
+        document.body.appendChild(snap);
+        document.body.appendChild(ListImg);
+        document.body.appendChild(img1);
+        
+        // click
+        tex.onclick = () => {
+            if (Ul.style.display === "none") {
+                Ul.style.display = "block";
+            } else {
+                Ul.style.display = "none";
+            }
+        }
+        let toggle = false;
+        butt1.onclick = () => {
+            toggle = !toggle;
+            botworker(toggle);
+        }
+
+        tex1.onclick = () => {
+            img1.src = "https://www.ontariosciencecentre.ca/media/2098/fireworksheader3.jpg"
+        }
+        tex2.onclick = () => {
+            img1.src = "https://www.creativefabrica.com/wp-content/uploads/2020/05/22/Royal-Crest-Coat-of-Arms-Graphics-4182626-1-1-580x386.png"
+        }
+        tex3.onclick = () => {
+            img1.src = "https://www.thephotoargus.com/wp-content/uploads/2019/06/actionphotography31.jpg"
+        }
+        tex4.onclick = () => {
+            img1.src = "https://upload.wikimedia.org/wikipedia/commons/8/8e/Murrah_buffalo.JPG"
+        }
+
+        var w;
+
+        // web worker
+        function botworker(toggle) {
+            if (typeof (Worker) !== "undefined") {
+
+                if (typeof (w) == "undefined") {
+                    w = new Worker("webworker.js");
+                }
+                if (toggle) {
+                    w.onmessage = function (event) {
+                        butt1.innerHTML = event.data.date;
+                        butt1.style.position = "fixed";
+                        butt1.style.top = "0";
+                        butt1.style.right = "0";
+                        butt1.style.backgroundColor = event.data.numc;
+                        butt1.style.color = event.data.texc;
+                    };
+                }
+                else {
+                    w.terminate();
+                    w = undefined;
+                    butt1.style.position = "relative";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
